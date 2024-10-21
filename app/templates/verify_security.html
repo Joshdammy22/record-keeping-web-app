@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Verify Security
+{% endblock %}
+
+{% block content %}
+<div class="container" style="margin-top: 100px;">
+    <h2>Verify Security</h2>
+
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 50vh;">
+        <div class="col-md-4"> <!-- Adjust the column width using Bootstrap's grid system -->
+            <form method="POST" action="{{ url_for('main.verify_security') }}" class="text-center">
+                {% if current_user.pin %}
+                    <div class="form-group">
+                        <label for="pin">Enter your PIN:</label>
+                        <input type="password" name="pin" class="form-control" id="pin" required>
+                    </div>
+                {% elif current_user.security_question %}
+                    <div class="form-group">
+                        <label for="answer">{{ current_user.security_question }}:</label>
+                        <input type="text" name="answer" class="form-control" id="answer" required>
+                    </div>
+                {% endif %}
+                
+                <button type="submit" class="btn btn-primary mt-3">Verify</button>
+            </form>
+        </div>
+    </div>
+    
+</div>
+
+
+{% endblock %}
+
+
+{% block footer %}
+<!-- Footer Section -->
+    <footer class="text-center"style="margin-top:100px;">
+        <p>&copy; {{ current_year }} Record Keeping App. All Rights Reserved.</p>
+        <a href="{{ url_for('main.about') }}">About Us</a> |
+        <a href="{{ url_for('main.privacy') }}">Privacy Policy</a> |
+        <a href="{{ url_for('main.contact') }}">Contact</a>
+    </footer>
+{% endblock footer %}

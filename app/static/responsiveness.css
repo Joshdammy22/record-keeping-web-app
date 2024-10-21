@@ -1,0 +1,335 @@
+/* General Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Responsive Navbar Styling */
+
+/* For screens smaller than 768px (Tablets and smaller) */
+@media (max-width: 768px) {
+    .navbar-brand img {
+        width: 25px;
+        height: 25px; /* Slightly smaller logo on smaller screens */
+    }
+
+    .navbar-nav .nav-item .nav-link {
+        font-size: 0.9rem; /* Slightly reduce font size for nav links */
+    }
+
+    .navbar-nav {
+        text-align: center; /* Center the menu items */
+    }
+
+    .navbar {
+        padding: 0.5rem 1rem; /* Reduce navbar padding */
+    }
+}
+
+/* For screens smaller than 576px (Mobile devices) */
+@media (max-width: 576px) {
+    .navbar-brand img {
+        width: 20px;
+        height: 20px; /* Further reduce logo size on smaller screens */
+    }
+
+    .navbar-nav .nav-item .nav-link {
+        font-size: 0.85rem; /* Further reduce font size for nav links */
+    }
+
+    .navbar-nav {
+        padding: 0.5rem 0; /* Less padding around nav items */
+    }
+
+    .navbar {
+        padding: 0.4rem 0.8rem; /* Further reduce navbar padding */
+    }
+}
+
+
+
+
+/* Medium Screens (Tablets and smaller laptops) */
+@media (max-width: 1024px) {
+    .hero-section {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 80vh; /* Reduced height for medium screens */
+    }
+
+    .hero-btn {
+        left: -325px;  /* Adjust position for medium screens */
+        top: 150px;    /* Vertical position */
+        padding: 8px 16px;  /* Smaller padding */
+        font-size: 1.15rem;  /* Smaller font size */
+        min-width: 140px; /* Button width */
+        height: 45px; /* Button height */
+    }
+}
+
+/* Small Screens (Tablets and large phones) */
+@media (max-width: 768px) {
+    .hero-section {
+        background-size: contain; /* Fit image within section */
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 48vh; /* Reduced height */
+        margin: 0; /* Remove margins */
+    }
+
+    .hero-btn {
+        left: -157px;  /* Adjust position for small screens */
+        top: 80px;    /* Vertical position */
+        padding: 8px 18px;  /* Smaller padding */
+        font-size: 1rem;  /* Font size adjustment */
+        min-width: 120px; /* Button width */
+        height: 40px; /* Button height */
+    }
+}
+
+/* Extra Small Screens (Mobile devices) */
+@media (max-width: 480px) {
+    .hero-section {
+        background-size: contain; /* Keep image contained on small screens */
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 40vh; /* Further reduced height for mobile */
+        margin: 0; /* Remove margins */
+    }
+
+    .hero-btn {
+        left: -80px;  /* Adjust button position for mobile */
+        top: 60px;    /* Vertical adjustment for mobile */
+        padding: 6px 14px;  /* Smaller padding */
+        font-size: 0.9rem;  /* Smaller font size */
+        min-width: 100px; /* Minimum button width */
+        height: 35px; /* Button height */
+    }
+}
+
+/* Ultra Small Screens (Very small mobile devices) */
+@media (max-width: 320px) {
+    .hero-section {
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 35vh; /* Smallest height for tiny screens */
+    }
+
+    .hero-btn {
+        left: -50px;  /* Adjust position */
+        top: 40px;    /* Vertical adjustment */
+        padding: 4px 10px;  /* Minimal padding */
+        font-size: 0.8rem;  /* Smallest font size */
+        min-width: 90px; /* Smallest width */
+        height: 30px; /* Button height */
+    }
+}
+
+
+/* Responsive Styling for the Challenges Solved Section */
+
+/* For screens smaller than 768px (Tablets and smaller) */
+@media (max-width: 768px) {
+    .challenges-section {
+        padding: 3rem 1rem; /* Adjust padding for smaller screens */
+    }
+
+    .challenges-section .row {
+        flex-direction: column-reverse; /* Stack the image below the text on smaller screens */
+    }
+
+    .challenges-section img {
+        margin-bottom: 2rem; /* Add space below the image */
+        max-width: 100%; /* Ensure the image doesn't exceed the width of its container */
+        height: 60%; /* Maintain aspect ratio */
+    }
+
+    .challenge {
+        margin-bottom: 1.5rem; /* Reduce space between challenge sections */
+    }
+
+    .challenge h4 {
+        font-size: 1.25rem; /* Adjust heading font size for better readability */
+    }
+
+    .challenge p {
+        font-size: 1rem; /* Adjust paragraph font size for smaller screens */
+    }
+}
+@media (max-width: 576px) {
+    .challenges-section h2 {
+        font-size: 1.5rem; /* Reduce heading size */
+    }
+
+    .challenges-section h4 {
+        font-size: 1.2rem; /* Reduce subheading size */
+    }
+
+    .challenge {
+        text-align: left; /* Align text to left for smaller screens */
+    }
+}
+/* For screens smaller than 480px (Small mobile devices) */
+@media (max-width: 480px) {
+    .challenges-section {
+        padding: 2rem 1rem; /* Further reduce padding for very small screens */
+    }
+
+    .challenges-section .row {
+        flex-direction: column-reverse;
+    }
+
+    .challenge h4 {
+        font-size: 1.1rem; /* Further reduce heading font size */
+    }
+
+    .challenge p {
+        font-size: 0.9rem; /* Reduce paragraph font size for small mobile devices */
+    }
+}
+
+
+
+/* How It Works Section Styling */
+/* For screens smaller than 768px (Tablets and smaller) */
+@media (max-width: 768px) {
+    .how-it-works-section .card {
+        width: 90%; /* Reduce card width to 90% of the container */
+        margin: 10px auto; /* Center the card with margin */
+        padding: 10px; /* Reduce padding inside the card */
+    }
+
+    .how-it-works-section .card-img-top {
+        height: auto; /* Maintain the natural height of the image */
+        width: 100%; /* Ensure the image fills the width of the card */
+        object-fit: cover; /* Cover the entire card area without cropping key parts */
+    }
+
+    .how-it-works-section .card-title {
+        font-size: 1.1rem; /* Reduce the font size slightly */
+    }
+
+    .how-it-works-section .card-text {
+        font-size: 0.9rem; /* Reduce the font size for the card text */
+    }
+}
+
+/* For screens smaller than 576px (Mobile devices) */
+@media (max-width: 576px) {
+    .how-it-works-section .card {
+        width: 100%; /* Cards take full width on small mobile screens */
+        margin: 5px 0; /* Less margin around the cards */
+        padding: 8px; /* Further reduce padding */
+    }
+
+    .how-it-works-section .card-img-top {
+        height: auto; /* Keep natural height */
+        width: 100%; /* Ensure images fill the card width */
+        object-fit: cover; /* Avoid cropping important parts of the image */
+    }
+
+    .how-it-works-section .card-title {
+        font-size: 1rem; /* Smaller font size for titles */
+    }
+
+    .how-it-works-section .card-text {
+        font-size: 0.85rem; /* Smaller font size for text */
+    }
+}
+/* For screens smaller than 576px (Mobile devices) */
+@media (max-width: 576px) {
+    /* How It Works Section */
+    .how-it-works-section {
+        padding: 15px 0; /* Further reduce padding */
+    }
+
+    .how-it-works-section h2 {
+        font-size: 1.3rem; /* Further reduce heading size */
+        margin-bottom: 15px;
+    }
+
+    /* Card Styling */
+    .card {
+        margin: 8px 0; /* Further reduce margin between cards */
+    }
+
+    .card-img-top {
+        height: 120px; /* Further reduce image height */
+    }
+
+    .card-body h4 {
+        font-size: 1.1rem; /* Further reduce card title size */
+    }
+
+    .card-body p {
+        font-size: 0.85rem; /* Further reduce card text size */
+    }
+
+    /* CTA Section */
+    .cta-section {
+        padding: 30px 10px; /* Further reduce padding */
+    }
+
+    .cta-section h2 {
+        font-size: 1.5rem; /* Further reduce heading size */
+    }
+
+    .cta-section p {
+        font-size: 0.9rem; /* Further reduce paragraph size */
+    }
+
+    .cta-section .btn {
+        padding: 8px 16px; /* Further reduce button size */
+        font-size: 0.9rem; /* Adjust button font size */
+    }
+}
+
+
+
+
+
+
+@media (max-width: 576px) {
+    footer {
+        padding: 10px 0; /* Reduce footer padding */
+    }
+
+    footer p {
+        font-size: 0.9rem; /* Reduce footer text size */
+    }
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.8rem; /* Slightly smaller on mobile */
+    }
+
+    .form-control {
+        font-size: 0.9rem; /* Smaller font size for inputs */
+    }
+
+    .btn-primary {
+        padding: 0.5rem; /* Reduced padding for buttons */
+    }
+}
+
+@media (max-width: 576px) {
+    .row {
+        margin-top: 1rem; /* Less space on extra-small screens */
+        margin-bottom: 1rem; /* Less space on extra-small screens */
+    }
+
+    h2 {
+        font-size: 1.5rem; /* Smaller font size on mobile */
+    }
+
+    .btn-primary {
+        padding: 0.5rem; /* Adjust button padding */
+    }
+}

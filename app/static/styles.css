@@ -1,0 +1,264 @@
+/* General Body Styling */
+body {
+    font-family: 'Arial', sans-serif; /* Use a clean, readable font */
+    line-height: 1.6; /* Improve readability */
+    background-color: #f8f9fa; /* Light background for contrast */
+    margin: 0;
+    padding: 0;
+    color: #333; /* General text color */
+}
+
+/* Text and Heading Styling */
+h1, h2, h3, h4, h5, h6 {
+    color: #343a40; /* Consistent heading color */
+    margin-bottom: 15px;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+
+
+
+
+/* Navbar Styling */
+.navbar {
+    background-color: #343a40; /* Dark background */
+    color: white;
+    padding: 15px 20px;
+}
+
+.navbar-brand img {
+    filter: brightness(0) invert(1); /* Ensures the logo stands out on dark background */
+}
+
+.navbar-nav .nav-link {
+    color: white; /* White text color for navbar links */
+    font-size: 1.1rem; /* Slightly increase font size */
+    margin-left: 10px; /* Add space between nav items */
+    position: relative; /* For the underline effect */
+    padding-bottom: 5px; /* Space for the underline */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0); /* Start with a hidden underline */
+    height: 2px; /* Thickness of the underline */
+    bottom: 0;
+    left: 0;
+    background-color: #007bff; /* Blue underline color */
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out; /* Slide the underline in */
+}
+
+.navbar-nav .nav-link:hover::after {
+    transform: scaleX(1); /* Fully expand the underline on hover */
+    transform-origin: bottom left;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff; /* Change text color to blue on hover */
+}
+
+/* Responsive Menu */
+@media (max-width: 992px) {
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .navbar-nav .nav-link {
+        margin: 5px 0; /* Add margin for better spacing on small screens */
+    }
+}
+
+
+/* Hero Section Styling */
+.hero-section {
+    background-image: url(../static/Record\ keeping.png); /* Path to your background image */
+    background-size: cover no-repeat; /* Ensure the image covers the entire section */
+    background-position: center; /* Center the background image */
+    color: white; /* Text color for contrast */
+    height: 98vh; /* Height to cover 80% of the viewport height */
+    display: flex; /* Flexbox layout for centering content */
+    flex-direction: column; /* Ensure content stacks vertically */
+    align-items: center; /* Vertically center the content */
+    justify-content: center; /* Horizontally center the content */
+    padding: 60px 20px; /* Padding for spacing around content */
+    text-align: center; /* Center-align the text */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Text shadow for readability */
+    position: relative; /* Positioning for overlay */
+    z-index: 1;
+}
+/* Styling for the button */
+.hero-btn {
+    position: relative;
+    left: -535px;  /* Moves the button to the left */
+    top: 250px;   /* Moves the button down */
+    padding: 10px 20px;  /* Adjust padding for size */
+    font-size: 1.25rem;  /* Adjust font size for visibility */
+    font-weight: bold;
+}
+.hero-btn:hover{
+    background-color: #0056b3; /* Darker blue on hover */
+    color: white;
+
+}
+
+/* Button Styling */
+.btn {
+    padding: 10px 20px; /* Increase button padding */
+    font-size: 1.2rem; /* Adjust font size */
+    background-color: #007bff; /* Primary button color */
+    color: white; /* Text color for buttons */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners */
+    transition: background-color 0.3s ease-in-out; /* Smooth hover transition */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Darker shade for hover effect */
+}
+
+/* Challenges Section Styling */
+.challenges-section {
+    padding: 40px 0;
+}
+
+.challenges-section h2 {
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.challenges-section h4 {
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.challenges-section p {
+    color: #333;
+}
+
+.challenge {
+    margin-bottom: 20px;
+}
+
+.challenges-section img {
+    max-width: 100%; /* Ensure image scales properly */
+    height: auto;
+    border-radius: 10px; /* Optional: Add rounded corners to the image */
+}
+
+/* How It Works Section Styling */
+.how-it-works-section {
+    padding: 40px 0;
+}
+
+.how-it-works-section h2 {
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+/* Card Styling */
+.card {
+    border: 1px solid #e0e0e0; /* Subtle card border */
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Card shadow */
+    transition: transform 0.3s ease;
+    margin: 20px 0;
+}
+
+.card:hover {
+    transform: scale(1.02); /* Slight scale-up on hover */
+}
+
+* Main styles for desktop view */
+.card {
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    margin: 20px 0;
+    padding: 15px; /* Reduce padding for desktop */
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto; /* Allow dynamic height for images */
+    object-fit: cover; /* Cover the card area without cropping important parts */
+}
+/* CTA Section Styling */
+.cta-section {
+    background-color: #f7f7f7; /* Light gray background */
+    color: #333; /* Darker text color for better contrast */
+    padding: 60px 20px; /* Spacing around the section */
+    border-radius: 8px; /* Optional: Rounded corners */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.cta-section h2 {
+    margin-bottom: 20px; /* Space below the heading */
+}
+
+.cta-section .btn {
+    margin: 10px; /* Space around the button */
+}
+
+.alert {
+    max-width: 500px; /* Adjust the maximum width */
+    margin: 0 auto; /* Centering the alert within its parent */
+}
+
+.position-absolute {
+    z-index: 1050; /* Ensure the flash message appears above other content */
+}
+
+.close {
+    position: absolute;
+    right: 10px; /* Adjust the position of the close button */
+    top: 10px; /* Adjust the position of the close button */
+}
+
+
+/* Footer Styling */
+footer {
+    background-color: #343a40; /* Dark footer background */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #0056b3;
+}
+
+/* Forms Styling */
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Additional Styles (if needed) */

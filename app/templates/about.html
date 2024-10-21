@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %} About{% endblock title %}
+{% block content %}
+<div class="container text-center" style="margin-top:100px;">
+    <h1 style="font-size: 2.5rem;">About the Record Keeping App</h1>
+    <p style="font-size: 1.25rem;">Welcome to the Record Keeping App! Our innovative platform is designed to simplify the way you manage your records, ensuring that your information is organized and secure. In a world where information is abundant, having a reliable system to keep track of your records is essential.</p>
+    
+    <p style="font-size: 1.25rem;">The Record Keeping App stands out by offering secure cloud storage, allowing you to encrypt and store your data safely, accessible only by you. Our user-friendly interface ensures that anyone can manage their records without a steep learning curve, making it easy to get started right away.</p>
+
+    <p style="font-size: 1.25rem;">Effortless organization is at the core of our app. You can quickly categorize, tag, and search your records to find what you need in seconds. We aim to empower individuals and organizations to take control of their data through our easy-to-use app.</p>
+
+    <p style="font-size: 1.25rem;">Our commitment to data security and user satisfaction is at the heart of everything we do. Experience the difference with the Record Keeping App, and join thousands of satisfied users who have transformed their record management process into a seamless and secure experience.</p>
+
+    <p style="font-size: 1.25rem;">Sign up today and take the first step toward organized living!</p>
+</div>
+{% endblock %}
+
+{% block footer %}
+<!-- Footer Section -->
+<footer class="text-center" style="margin-top:230px;">
+    <p style="font-size: 1rem;">&copy; {{ current_year }} Record Keeping App. All Rights Reserved.</p>
+    <a href="{{ url_for('main.about') }}" style="font-size: 1rem;">About Us</a> |
+    <a href="{{ url_for('main.privacy') }}" style="font-size: 1rem;">Privacy Policy</a> |
+    <a href="{{ url_for('main.contact') }}" style="font-size: 1rem;">Contact</a>
+</footer>
+{% endblock footer %}

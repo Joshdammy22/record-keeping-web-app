@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Setup Security
+{% endblock %}
+
+{% block content %}
+<style>
+    .container {
+        margin-top: 50px; /* Add some space from the top */
+    }
+
+    .btn-primary {
+        margin-top: 20px; /* Space above the button */
+    }
+
+    .modal-body {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Space between inputs in the modal */
+    }
+
+    .form-control {
+        border-radius: 0.5rem; /* Rounded corners */
+    }
+</style>
+
+<div class="container" style="margin-top:100px;">
+    <h2 class="text-center">Setup Security</h2>
+    <p class="text-center">
+        This section allows you to set up security for your account. You can choose a security method that best suits your needs. 
+        Follow the instructions to ensure your account is protected.
+    </p>
+    
+    <div class="text-center">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#setupSecurityModal">Setup Security</button>
+    </div>
+    
+</div>
+
+<!-- Modal for Security Method Selection -->
+<div class="modal fade" id="setupSecurityModal" tabindex="-1" role="dialog" aria-labelledby="setupSecurityModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="background-color: #f8f9fa; border-radius: 0.5rem;">
+            <div class="modal-header" style="border-bottom: none;">
+                <h5 class="modal-title" id="setupSecurityModalLabel">Select Security Method</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: #dc3545; font-size: 1.5rem;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="padding: 20px;">
+                <form id="securityMethodForm">
+                    <div class="form-group">
+                        <label for="choice">Select Security Method:</label>
+                        <select class="form-control" id="choice">
+                            <option value="" disabled selected>Select a method</option>
+                            <option value="pin">PIN</option>
+                            <option value="question">Security Question</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-primary mt-3" id="nextButton">Next</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for PIN or Security Question Input -->
+<div class="modal fade" id="inputSecurityModal" tabindex="-1" role="dialog" aria-labelledby="inputSecurityModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="background-color: #f8f9fa; border-radius: 0.5rem;">
+            <div class="modal-header" style="border-bottom: none;">
+                <h5 class="modal-title" id="inputSecurityModalLabel">Enter Security Information</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: #dc3545; font-size: 1.5rem;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="inputSecurityContent" style="padding: 20px;"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="submitSecurity">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('nextButton').addEventListener('click', function() {
+        const method = document.getElementById('choice').value;
+        const inputContent = document.getElementById('inputSecurityContent');
+    
+        if (method === 'pin') {
+            inputContent.innerHTML = `
+                <div class="form-group">
+                    <label for="pin">Enter PIN:</label>
+                    <input type="password" class="form-control" id="pin" placeholder="Choose a PIN" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm_pin">Confirm PIN:</label>
+                    <input type="password" class="form-control" id="confirm_pin" placeholder="Confirm your PIN" required>
+                </div>
+            `;
+        } else if (method === 'question') {
+            inputContent.innerHTML = `
+                <div class="form-group">
+                    <label for="security_question">Security Question:</label>
+                    <select class="form-control" id="security_question" required>
+                        <option value="" disabled selected>Select a question</option>
+                        <option value="pet">What is your pet's name?</option>
+                        <option value="mother">What is your mother's maiden name?</option>
+                        <option value="city">What city were you born in?</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="security_answer">Answer:</label>
+                    <input type="text" class="form-control" id="security_answer" placeholder="Your answer" required>
+                </div>
+            `;
+        }
+    
+        $('#setupSecurityModal').modal('hide'); // Hide the first modal
+        $('#inputSecurityModal').modal('show'); // Show the input modal
+    });
+    
+    document.getElementById('submitSecurity').addEventListener('click', function() {
+        const method = document.getElementById('choice').value;
+        let securityData = {
+            choice: method,
+        };
+    
+        if (method === 'pin') {
+            securityData.pin = document.getElementById('pin').value;
+            securityData.confirmPin = document.getElementById('confirm_pin').value;
+        } else if (method === 'question') {
+            const questionMap = {
+                pet: "What is your pet's name?",
+                mother: "What is your mother's maiden name?",
+                city: "What city were you born in?"
+            };
+            const selectedKey = document.getElementById('security_question').value;
+            securityData.security_question = questionMap[selectedKey]; // Get the full question
+            securityData.security_answer = document.getElementById('security_answer').value;
+        }
+    
+        // Send the data to the server
+        fetch('/setup_security', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(securityData),
+        })
+        .then(response => {
+            if (response.ok) {
+                // Redirect to the dashboard
+                window.location.href = '/dashboard'; // Adjust this route as necessary
+            } else {
+                alert('Error: ' + response.statusText);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
+        });
+    });    
+</script>
+
+{% endblock %}
+
+
+{% block footer %}
+<!-- Footer Section -->
+    <footer class="text-center"style="margin-top:230px;">
+        <p>&copy; {{ current_year }} Record Keeping App. All Rights Reserved.</p>
+        <a href="{{ url_for('main.about') }}">About Us</a> |
+        <a href="{{ url_for('main.privacy') }}">Privacy Policy</a> |
+        <a href="{{ url_for('main.contact') }}">Contact</a>
+    </footer>
+{% endblock footer %}

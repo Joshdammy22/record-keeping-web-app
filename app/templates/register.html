@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock title %}
+{% block styles %}
+<style>
+    .small-icon {
+        font-size: 1.2rem; /* Adjust the icon size */
+        color: #6c757d; /* Optional: Adjust color to make it subtle */
+    }
+
+    .toggle-password {
+        cursor: pointer;
+        background: none; /* Remove background */
+        border: none; /* Remove border */
+        padding: 0; /* Remove padding */
+        position: relative; /* Ensure it stays with the input */
+        display: inline-block; /* Allow it to be on the same line as the input */
+        margin-left: 10px; /* Adjust this value to move the icon right */
+    }
+
+    .text-center {
+        text-align: center; /* Center the text */
+    }
+
+    .text-center a {
+        color: #007bff; /* Optional: Make the link blue */
+        text-decoration: none; /* Remove underline for cleaner look */
+    }
+
+    .text-center a:hover {
+        text-decoration: underline; /* Add underline on hover for better UX */
+    }
+
+    .mt-4 {
+        margin-top: 1.5rem; /* Space above the "Already have an account" text */
+    }
+
+    /* Responsive form container */
+    .col-lg-6 {
+        max-width: 500px; /* Limit maximum width */
+        margin: 0 auto; /* Center the form */
+        padding: 0 15px; /* Padding for small screens */
+    }
+
+    /* Full-width buttons */
+    button.btn {
+        width: 100%; /* Full-width buttons */
+        margin-top: 15px; /* Space above button */
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .col-lg-6 {
+            width: 90%; /* Use a wider percentage on smaller screens */
+        }
+    }
+
+    .form-group {
+        position: relative; /* Set relative positioning to parent */
+    }
+
+    /* Additional styling for form validation feedback */
+    .invalid-feedback {
+        display: block; /* Ensure the feedback is shown */
+    }
+
+    /* Adjust margin for the hero section for mobile */
+    @media (max-width: 576px) {
+        .mt-5 {
+            margin-top: 2rem; /* Smaller top margin for mobile */
+        }
+        .mt-3 {
+            margin-top: 1rem; /* Smaller button margin */
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row" style="margin-bottom:50px; margin-top: 90px;">
+    <div class="col-lg-6 offset-lg-3">
+        <h2 class="my-4 text-center">Create Your Account</h2>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.username.label(class="form-label") }}
+                {{ form.username(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.email.label(class="form-label") }}
+                {{ form.email(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.password.label(class="form-label") }}
+                <div class="input-group">
+                    {{ form.password(class="form-control", id="password") }}
+                    <button type="button" class="toggle-password" onclick="togglePasswordVisibility('password')">
+                        <i class="fas fa-eye small-icon" id="eye-icon-password"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form.confirm_password.label(class="form-label") }}
+                <div class="input-group">
+                    {{ form.confirm_password(class="form-control", id="confirm_password") }}
+                    <button type="button" class="toggle-password" onclick="togglePasswordVisibility('confirm_password')">
+                        <i class="fas fa-eye small-icon" id="eye-icon-confirm"></i>
+                    </button>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Register</button>
+            <div class="text-center mt-4">
+                <p>Already have an account? <a href="{{ url_for('main.login') }}">Login here</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function togglePasswordVisibility(fieldId) {
+        var passwordField = document.getElementById(fieldId);
+        var toggleButton = passwordField.nextElementSibling.querySelector("i");
+
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            toggleButton.classList.remove("fa-eye");
+            toggleButton.classList.add("fa-eye-slash");
+        } else {
+            passwordField.type = "password";
+            toggleButton.classList.remove("fa-eye-slash");
+            toggleButton.classList.add("fa-eye");
+        }
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% block title %}
+   Log in
+{% endblock %}
+{% block styles %}
+<style>
+    .small-icon {
+        font-size: 1.2rem; /* Adjust the icon size */
+        color: #6c757d; /* Optional: Adjust color to make it subtle */
+    }
+
+    .toggle-password {
+        cursor: pointer;
+        background: none; /* Remove background */
+        border: none; /* Remove border */
+        padding: 0; /* Remove padding */
+        position: relative; /* Ensure it stays with the input */
+        display: inline-block; /* Allow it to be on the same line as the input */
+        margin-left: 10px; /* Adjust this value to move the icon right */
+    }
+
+    .text-center {
+        text-align: center; /* Center the text */
+    }
+
+    .text-center a {
+        color: #007bff; /* Optional: Make the link blue */
+        text-decoration: none; /* Remove underline for cleaner look */
+    }
+
+    .text-center a:hover {
+        text-decoration: underline; /* Add underline on hover for better UX */
+    }
+
+    .mt-4 {
+        margin-top: 1.5rem; /* Space above the "Don't have an account" text */
+    }
+
+    .col-lg-6 {
+        max-width: 500px; /* Limit maximum width */
+        margin: 0 auto; /* Center the form */
+    }
+
+    button.btn {
+        width: 100%; /* Full-width buttons */
+        margin-top: 15px; /* Space above button */
+    }
+
+    .form-group {
+        position: relative; /* Set relative positioning to parent */
+    }
+
+    /* Additional styling for form validation feedback */
+    .invalid-feedback {
+        display: block; /* Ensure the feedback is shown */
+    }
+
+    @media (max-width: 768px) {
+        .col-lg-6 {
+            width: 90%; /* Use a wider width on smaller screens */
+            margin: 0 auto; /* Center the form */
+            margin-top: 20px; /* Add margin on top for mobile */
+            margin-bottom: 20px; /* Add margin at the bottom for mobile */
+        }
+    }
+</style>
+{% endblock styles %}
+
+{% block content %}
+<div class="row" style="margin-bottom:50px; margin-top: 90px;">
+    <div class="col-lg-6 offset-lg-3">
+        <h2 class="my-4 text-center">Login</h2>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.email_or_username.label(class="form-label") }}
+                {{ form.email_or_username(class="form-control") }}
+                {% if form.email_or_username.errors %}
+                    <div class="invalid-feedback">
+                        {{ form.email_or_username.errors[0] }}  <!-- Display the first error -->
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.password.label(class="form-label") }}
+                <div class="input-group">
+                    {{ form.password(class="form-control", id="password") }}
+                    <button type="button" class="toggle-password" onclick="togglePasswordVisibility('password')">
+                        <i class="fas fa-eye small-icon" id="eye-icon"></i>
+                    </button>
+                </div>
+                {% if form.password.errors %}
+                    <div class="invalid-feedback">
+                        {{ form.password.errors[0] }}  <!-- Display the first error -->
+                    </div>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Login</button>
+            <div class="text-center mt-4">
+                <p>Don't have an account? <a href="{{ url_for('main.register') }}">Sign up here</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function togglePasswordVisibility(fieldId) {
+        var passwordField = document.getElementById(fieldId);
+        var toggleButton = document.getElementById("eye-icon");
+
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            toggleButton.classList.remove("fa-eye");
+            toggleButton.classList.add("fa-eye-slash");
+        } else {
+            passwordField.type = "password";
+            toggleButton.classList.remove("fa-eye-slash");
+            toggleButton.classList.add("fa-eye");
+        }
+    }
+</script>
+{% endblock %}

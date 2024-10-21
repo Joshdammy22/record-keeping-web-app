@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Contact Us{% endblock title %}
+{% block content %}
+<div class="container mt-4">
+    <h1>Contact Us</h1>
+    <p>If you have any questions or feedback, please reach out to us:</p>
+    <ul>
+        <li>Email: support@recordkeepingapp.com</li>
+        <li>Phone: +1 (234) 567-8901</li>
+    </ul>
+    <p>We would love to hear from you!</p>
+</div>
+{% endblock %}
+
+
+{% block footer %}
+<!-- Footer Section -->
+    <footer class="text-center"style="margin-top:290px;">
+        <p>&copy; {{ current_year }} Record Keeping App. All Rights Reserved.</p>
+        <a href="{{ url_for('main.about') }}">About Us</a> |
+        <a href="{{ url_for('main.privacy') }}">Privacy Policy</a> |
+        <a href="{{ url_for('main.contact') }}">Contact</a>
+    </footer>
+{% endblock footer %}

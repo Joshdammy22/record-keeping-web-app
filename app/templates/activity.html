@@ -1,0 +1,247 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Recent Activity
+{% endblock %}
+
+{% block styles %}
+<style>
+    /* Sidebar */
+    .sidebar {
+        height: calc(100vh - 70px); /* Adjusted height to account for the navbar */
+        position: fixed;
+        top: 70px; /* Adjust this value to the height of your navbar */
+        left: 0;
+        width: 250px; /* Default width */
+        background-color: #1f1f1f; /* Dark background */
+        padding-top: 60px; /* Leave space for the toggle button */
+        transition: width 0.3s ease, transform 0.3s ease; /* Smooth transition */
+        z-index: 1000;
+    }
+
+    /* Sidebar Links */
+    .sidebar a {
+        color: #ffffff;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        font-size: 16px;
+        transition: background-color 0.2s;
+    }
+
+    .sidebar a:hover {
+        background-color: #333333;
+    }
+
+    /* Toggle button */
+    .toggle-sidebar {
+        position: fixed; /* Absolute positioning within the sidebar */
+        top: 72px; /* Positioning near the top */
+        left: -1.5px; /* Align to the left */
+        background-color: transparent; /* No background color */
+        border: none; /* No border */
+        color: white; /* White color for the icon */
+        cursor: pointer;
+        font-size: 24px; /* Icon size */
+        z-index: 1100; /* Keep it on top */
+        margin: 0; /* Remove all margins */
+        width: auto; /* Ensure width doesn't stretch unnecessarily */
+        height: auto; /* Ensure height is only as large as content */
+        line-height: normal; /* Reset line-height */
+        display: inline-block; /* Prevent it from behaving like a block element */
+        transition: background-color 0.3s ease; /* Smooth background transition */
+        padding: 8px 12px; /* Add padding for better clickability */
+        border-radius: 4px; /* Rounded corners */
+    }
+
+    /* Hamburger and close icons */
+    .icon-hamburger::before {
+        content: '☰'; /* Hamburger icon */
+    }
+
+    .icon-close::before {
+        content: '✖'; /* Close (X) icon */
+    }
+
+    /* Main content */
+    .main-content {
+        margin-left: 270px; /* Space for sidebar */
+        padding: 20px;
+        max-width: 80%; /* Reduce width to 80% */
+        transition: margin-left 0.3s ease, max-width 0.3s ease;
+    }
+
+    /* Shrink margin when sidebar is hidden */
+    .main-content.hidden {
+        margin-left: 20px;
+        max-width: 95%; /* Increase width to 95% when sidebar is hidden */
+    }
+
+    /* Sidebar hidden styles */
+    .sidebar.hidden {
+        transform: translateX(-100%); /* Move it out of view */
+    }
+
+    /* Ensure button stays visible */
+    .toggle-sidebar.visible {
+        left: 15px; /* Keep it near the sidebar */
+    }
+
+    .custom-heading {
+        margin-left: 50px; /* Adjust this value as needed */
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .sidebar {
+            width: 200px; /* Reduced width for smaller screens */
+        }
+
+        .main-content {
+            margin-left: 220px; /* Adjusted margin for main content */
+        }
+
+        .toggle-sidebar {
+            left: 10px; /* Adjusted position for smaller screens */
+            top: 70px; /* Position the button a bit higher for small screens */
+            padding: 10px; /* Added padding for better touch target */
+            font-size: 20px; /* Smaller icon size for mobile */
+        }
+
+        .custom-heading {
+            margin-left: 20px; /* Less margin for smaller screens */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .sidebar {
+            width: 100%; /* Full width for mobile */
+            padding-top: 50px; /* Adjust padding */
+            position: absolute; /* Allow the sidebar to overlay */
+            top: 70; /* Position at the top */
+            left: 0; /* Align to the left */
+        }
+
+        .main-content {
+            margin-left: 0; /* No margin for mobile */
+            padding: 10px; /* Reduced padding for mobile */
+        }
+
+        .toggle-sidebar {
+            top: 10px; /* Positioning near the top */
+            left: 15px; /* Positioning from the left */
+        }
+
+        .custom-heading {
+            margin-left: 10px; /* Less margin for mobile */
+        }
+    }
+
+    /* Extra small devices */
+    @media (max-width: 320px) {
+        .sidebar a {
+            padding: 10px; /* Smaller padding for tiny screens */
+            font-size: 14px; /* Smaller font size */
+        }
+
+        .toggle-sidebar {
+            font-size: 18px; /* Further reduced icon size */
+        }
+    }
+</style>
+
+{% endblock styles %}
+
+{% block content %}
+<div class="container-fluid" style="margin-top: 100px;">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav class="sidebar" id="sidebar">
+            <div class="list-group">
+                <a href="{{ url_for('main.dashboard') }}">
+                    <span class="icon">🏠</span>
+                    <span>Dashboard</span>
+                </a>
+                
+                <a href="{{ url_for('main.search') }}">
+                    <span class="icon">🔍</span>
+                    <span>Search Records</span>
+                </a>
+            
+                <a href="{{ url_for('main.profile') }}">
+                    <span class="icon">👤</span>
+                    <span>Profile</span>
+                </a>
+                <a href="{{ url_for('main.profile') }}">
+                    <span class="icon">👤</span>
+                    <span>Dasboard</span>
+                </a>
+                <a href="{{ url_for('main.security') }}">
+                    <span class="icon">🔒</span>
+                    <span>Security Settings</span>
+                </a>
+                <a href="{{ url_for('main.activity') }}">
+                    <span class="icon">📅</span>
+                    <span>Recent Activity</span>
+                </a>
+               
+            </div>
+        </nav>
+
+        <!-- Toggle Button (now outside of the sidebar) -->
+        <button class="toggle-sidebar icon-hamburger" id="toggleSidebar"></button>
+
+         <!-- Main Content -->
+<div class="col-md-10 main-content" id="mainContent">
+        <h2>Recent Activity</h2>
+        <hr>
+
+        <ul class="list-group">
+            {% for activity in activities %}
+            <li class="list-group-item">
+                <strong>{{ activity.activity }}</strong>
+                <br>
+                <small>{{ activity.time }}</small>
+                {% if activity.ip %}<br><small>IP: {{ activity.ip }}</small>{% endif %}
+            </li>
+            {% else %}
+            <li class="list-group-item">No recent activity found.</li>
+            {% endfor %}
+        </ul>
+</div><script>
+    // JavaScript for toggling sidebar
+ document.getElementById('toggleSidebar').addEventListener('click', function () {
+     const sidebar = document.getElementById('sidebar');
+     const mainContent = document.getElementById('mainContent');
+     const toggleButton = document.getElementById('toggleSidebar');
+     
+     sidebar.classList.toggle('hidden');
+     mainContent.classList.toggle('hidden');
+ 
+     // Change icon and background color based on sidebar visibility
+     if (sidebar.classList.contains('hidden')) {
+         toggleButton.classList.remove('icon-close');
+         toggleButton.classList.add('icon-hamburger');
+         toggleButton.style.backgroundColor = '#333'; // Dark background when sidebar is hidden
+     } else {
+         toggleButton.classList.remove('icon-hamburger');
+         toggleButton.classList.add('icon-close');
+         toggleButton.style.backgroundColor = 'transparent'; // Transparent when sidebar is visible
+     }
+ });
+ 
+ </script>
+ 
+ {% endblock %}
+ 
+ {% block footer %}
+ <!-- Footer Section -->
+ <footer class="text-center" style="margin-top: 250px;">
+     <p>&copy; {{ current_year }} Record Keeping App. All Rights Reserved.</p>
+     <a href="{{ url_for('main.about') }}">About Us</a> |
+     <a href="{{ url_for('main.privacy') }}">Privacy Policy</a> |
+     <a href="{{ url_for('main.contact') }}">Contact</a>
+ </footer>
+ {% endblock footer %}
+ 

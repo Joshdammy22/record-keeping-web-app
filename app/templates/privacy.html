@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}rivacy Policy{% endblock title %}
+{% block content %}
+<div class="container mt-4">
+    <h1>Privacy Policy</h1>
+    <p>Your privacy is important to us. This policy outlines how we collect, use, and protect your personal information.</p>
+    <h3>Information We Collect</h3>
+    <p>We collect information that you provide directly to us, such as when you create an account or update your records.</p>
+    <h3>How We Use Your Information</h3>
+    <p>We use your information to manage your account and improve our services. We will never share your information with third parties without your consent.</p>
+</div>
+{% endblock %}
+
+
+{% block footer %}
+<!-- Footer Section -->
+    <footer class="text-center"style="margin-top:230px;">
+        <p>&copy; {{ current_year }} Record Keeping App. All Rights Reserved.</p>
+        <a href="{{ url_for('main.about') }}">About Us</a> |
+        <a href="{{ url_for('main.privacy') }}">Privacy Policy</a> |
+        <a href="{{ url_for('main.contact') }}">Contact</a>
+    </footer>
+{% endblock footer %}

@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %} Home{% endblock title %}
+{% block content %}
+<div class="">
+<!-- Hero Section -->
+<div class="hero-section mb-3">
+    <hr class="my-4">
+    {% if current_user.is_authenticated %}
+    <a class="btn btn-primary btn-lg hero-btn" href="{{ url_for('main.dashboard') }}" role="button">Go to Dashboard</a>
+    {% else %}
+        <a class="btn btn-lg btn-warning hero-btn" href="{{ url_for('main.register') }}" role="button">Get Started</a>
+    {% endif %}
+</div>
+
+<!-- Challenges Solved Section -->
+<section class="challenges-section my-5 py-4">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Left Column: Image -->
+            <div class="col-md-6 text-center">
+                <img src="{{ url_for('static', filename='cha.jpg') }}" alt="Record Keeping Solution" class="img-fluid">
+            </div>
+
+            <!-- Right Column: Challenges -->
+            <div class="col-md-6">
+                <h2 class="mb-4">How the Record Keeping App Solves Your Challenges</h2>
+                <div class="challenge mb-4">
+                    <h4><i class="fas fa-lock fa-lg me-2"></i>Data Security</h4>
+                    <p>Protect sensitive records with top-level encryption, ensuring that your information is secure from unauthorized access and breaches.</p>
+                </div>
+                <div class="challenge mb-4">
+                    <h4><i class="fas fa-user-check fa-lg me-2"></i>Ease of Access</h4>
+                    <p>Access your records anywhere, anytime. The cloud-based system ensures your data is always available across multiple devices.</p>
+                </div>
+                <div class="challenge mb-4">
+                    <h4><i class="fas fa-cloud fa-lg me-2"></i>Cloud Accessibility</h4>
+                    <p>Access your records from anywhere, at any time, with seamless cloud-based storage, ensuring your data is always available when you need it.</p>
+                </div>
+            </div>            
+        </div>
+    </div>
+</section>
+
+
+   
+<!-- How It Works Section -->
+<section class="how-it-works-section my-5 container">
+    <h2 class="text-center">How It Works</h2>
+    <div class="row text-center">
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ url_for('static', filename='reg.jpg') }}" class="card-img-top" alt="Step 1: Register">
+                <div class="card-body">
+                    <h4 class="card-title">Step 1: Register</h4>
+                    <p class="card-text">Sign up for a free account to start using the app.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ url_for('static', filename='manage.jpg') }}" class="card-img-top" alt="Step 2: Manage Records">
+                <div class="card-body">
+                    <h4 class="card-title">Step 2: Manage Records</h4>
+                    <p class="card-text">Once registered, create and manage your records easily.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ url_for('static', filename='update.jpg') }}" class="card-img-top" alt="Step 3: Update Anytime">
+                <div class="card-body">
+                    <h4 class="card-title">Step 3: Update Anytime</h4>
+                    <p class="card-text">Update your records anytime, with changes saved instantly.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="cta-section my-5 text-center">
+    <div class="container">
+        <h2 class="display-4">Start Your Journey to Seamless Record Management!</h2>
+        <p class="lead">Sign up now and discover how easy it is to keep track of your important records.</p>
+        {% if current_user.is_authenticated %}
+            <a class="btn btn-primary btn-lg" href="{{ url_for('main.dashboard') }}" role="button">Go to Dashboard</a>
+        {% else %}
+            <a class="btn btn-lg btn-warning btn-lg" href="{{ url_for('main.register') }}" role="button">Get Started</a>
+        {% endif %}
+    </div>
+</section>
+</div>
+{% endblock %}
+
+{% block footer %}
+<!-- Footer Section -->
+<footer class="text-center">
+    <p>&copy; {{ current_year }} Record Keeping App. All Rights Reserved.</p>
+    <a href="{{ url_for('main.about') }}">About Us</a> |
+    <a href="{{ url_for('main.privacy') }}">Privacy Policy</a> |
+    <a href="{{ url_for('main.contact') }}">Contact</a>
+</footer>
+
+{% endblock footer %}
