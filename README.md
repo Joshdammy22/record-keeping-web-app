@@ -1,7 +1,6 @@
 # Record Keeping App
 
-![Record Keeping App]
-https://www.canva.com/design/DAGTrV6LYqM/6OJbKJVU_zQZBXkFfAH2wQ/view?utm_content=DAGTrV6LYqM&utm_campaign=designshare&utm_medium=link&utm_source=editor
+![Record Keeping App] (https://www.canva.com/design/DAGTrV6LYqM/6OJbKJVU_zQZBXkFfAH2wQ/view?utm_content=DAGTrV6LYqM&utm_campaign=designshare&utm_medium=link&utm_source=editor)
 
 ## Table of Contents
 
