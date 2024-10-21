@@ -1,7 +1,6 @@
 # Record Keeping App
 
-![Record Keeping App](https://via.placeholder.com/800x400?text=Record+Keeping+App+Logo) <!-- Replace with your app's logo -->
-
+![Record Keeping App](https://www.canva.com/design/DAGTrV6LYqM/6OJbKJVU_zQZBXkFfAH2wQ/view?utm_content=DAGTrV6LYqM&utm_campaign=designshare&utm_medium=link&utm_source=editor)
 ## Table of Contents
 
 - [About](#about)
@@ -37,7 +36,7 @@ To get started with the Record Keeping App, follow these steps:
 
 1. **Clone the Repository**:
     ```bash
-    git clone https://github.com/yourusername/record-keeping-app.git
+    git clone https://github.com/Joshdammy22/record-keeping-web-app.git
     ```
    
 2. **Navigate to the Project Directory**:
