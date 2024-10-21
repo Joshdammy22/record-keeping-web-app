@@ -1,6 +1,7 @@
 # Record Keeping App
 
-![Record Keeping App]([Record keeping.png](https://github.com/Joshdammy22/record-keeping-web-app/blob/main/Record%20keeping.png?raw=true))
+![Record Keeping App](https://github.com/Joshdammy22/record-keeping-web-app/raw/main/Record%20keeping.png)
+
 
 ## Table of Contents
 
